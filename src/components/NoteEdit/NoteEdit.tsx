@@ -1,13 +1,9 @@
 import { useContext, useState } from "react";
 import { NotesContext } from "@context/NotesProvider";
-import { NoteItemModalProps } from "./NoteItemModal.types";
-import { NoteItemModalStyled } from "./NoteItemModal.style";
+import { NoteEditProps } from "./NoteEdit.types";
 
-
-const NoteItemModal = ({note, open, closeModal}: NoteItemModalProps) => {
-
+const NoteEdit = ({ note, close }: NoteEditProps) => {
   const [notes, setNotes] = useContext(NotesContext);
-
   const [modifiedNoteTitle, setModifiedNoteTitle] = useState(note.title);
   const [modifiedNoteDetails, setModifiedNoteDetails] = useState(note.details);
 
@@ -19,7 +15,7 @@ const NoteItemModal = ({note, open, closeModal}: NoteItemModalProps) => {
     setModifiedNoteDetails(e.target.value);
   };
 
-  const handleSaveNote = (id: string) => {
+  const handleUpdateNote = (id: string) => {
     const newNotes = [...notes];
 
     newNotes.map((note) => {
@@ -30,22 +26,20 @@ const NoteItemModal = ({note, open, closeModal}: NoteItemModalProps) => {
     });
 
     setNotes(newNotes);
-    closeModal();
+    close();
   };
-
-  if (!open) return null;
-
   return (
-    
-      <NoteItemModalStyled >
-      <h2>NoteItemModal</h2>
-      <input type="text" defaultValue={note.title} onChange={handleModifiedNoteTitle} />
-      <textarea onChange={handleModifiedNoteDescription} defaultValue={note.details}></textarea>
-      <button onClick={closeModal}>Cancel</button>
-        <button onClick={() => handleSaveNote(note.id)}>Save</button>
-        </NoteItemModalStyled>
-    
+    <>
+      <div>NoteEdit</div>
+
+      <form action="" onSubmit={() => handleUpdateNote(note.id)}>
+        <input type="text" defaultValue={note.title} onChange={handleModifiedNoteTitle} />
+        <textarea onChange={handleModifiedNoteDescription} defaultValue={note.details}></textarea>
+        <button onClick={close}>Cancel</button>
+        <button type="submit">Save</button>
+      </form>
+    </>
   );
 };
 
-export default NoteItemModal;
+export default NoteEdit;

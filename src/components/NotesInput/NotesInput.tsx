@@ -1,11 +1,13 @@
 import { NotesContext } from "@context/NotesProvider";
+import {INITIAL_DATA} from '@data/initialFormData'
 import React, { useContext, useState } from "react";
 import uuid from 'react-uuid'
+import { NoteInputProps } from "./NotesInput.types";
 
-const NotesInput = () => {
+const NotesInput = ({close}:NoteInputProps) => {
   const [notes, setNotes] = useContext(NotesContext);
-  const [noteTitle, setNoteTitle] = useState("");
-  const [noteDetails, setNoteDetails] = useState("");
+  const [noteTitle, setNoteTitle] = useState(INITIAL_DATA.title);
+  const [noteDetails, setNoteDetails] = useState(INITIAL_DATA.description);
 
   const handleNoteTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNoteTitle(e.target.value);
@@ -26,7 +28,8 @@ const NotesInput = () => {
 
     setNoteTitle('');
     setNoteDetails('');
-    setNotes([ ...notes,newNote ]);
+    setNotes([...notes, newNote]);
+    close();
   };
   return (
     <form action="" autoComplete="off" onSubmit={handleAddNote}>

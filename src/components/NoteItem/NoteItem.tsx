@@ -1,4 +1,6 @@
+import NoteEdit from "@components/NoteEdit/NoteEdit";
 import NoteItemModal from "@components/NoteItemModal/NoteItemModal";
+import Modal from "@components/UI/Modal/Modal";
 import { NotesContext } from "@context/NotesProvider";
 import { useContext, useState } from "react";
 import ReactMarkdown from "react-markdown";
@@ -21,16 +23,19 @@ const NoteItem = (note: NoteItemProps) => {
   const handleCancelEditNote = () => {
     setIsNoteModalOpen(false);
   };
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <>
-      <NoteItemModal open={isNoteModalOpen} closeModal={handleCancelEditNote} note={note} />
+    <><Modal open={isModalOpen} close={() => setIsModalOpen(false)}>
+      
+      <NoteEdit close={() => setIsModalOpen(false)} note={note} />
+    </Modal>
+      {/* <NoteItemModal open={isNoteModalOpen} closeModal={handleCancelEditNote} note={note} /> */}
       <li>
         <label htmlFor={note.id}>
           <h2>{note.title}</h2>
           <ReactMarkdown>{note.details}</ReactMarkdown>
         </label>
-        <button onClick={handleOpenNoteModal}>edit</button>
+        <button onClick={()=>setIsModalOpen(true)}>edit</button>
         <button onClick={() => handleDeleteNote(note.id)}>Delete</button>
       </li>
     </>
