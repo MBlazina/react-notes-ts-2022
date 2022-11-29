@@ -20,6 +20,7 @@
       "@components/*": ["./components/*"],
       "@context/*": ["./context/*"],
       "@data/*": ["./data/*"],
+      "@mixins": ["./styles/mixins.ts"],
 
     }
   },

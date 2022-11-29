@@ -22,7 +22,11 @@ export const NotesProvider = ({ children }: Props) => {
 
   useEffect(() => {
     const notesStore = JSON.parse(localStorage.getItem(LOCAL_STORE_KEY) || '');
-    if (notesStore) setNotes(notesStore);
+    console.log("notes store")
+    console.log(notesStore)
+    if (notesStore) { setNotes(notesStore) } else {
+      localStorage.setItem(LOCAL_STORE_KEY,"")
+    }
   }, []);
 
   useEffect(() => {
