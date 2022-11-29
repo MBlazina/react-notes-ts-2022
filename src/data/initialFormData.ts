@@ -1,0 +1,4 @@
+export const INITIAL_DATA = {
+  title: "Dummy Title",
+  description: "**Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Aenean rhoncus non justo et pretium. Quisque sed urna ac erat vestibulum congue. Sed blandit elementum erat vitae ultrices. Nulla quam nulla, ultrices aliquet leo vitae, finibus interdum nunc. Praesent sit amet libero ultrices, placerat diam nec, condimentum quam. Sed sit amet leo efficitur, dignissim lectus ac, scelerisque metus. Donec nec ultrices lacus. Nullam commodo, ante eget lobortis laoreet, enim metus ornare elit, at viverra ipsum massa quis tellus. Aenean a condimentum erat."
+}
