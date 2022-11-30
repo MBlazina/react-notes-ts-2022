@@ -14,7 +14,7 @@ body {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Patrick Hand', sans-serif;
   font-size: 1rem;
 }
 

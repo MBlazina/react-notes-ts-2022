@@ -20,8 +20,9 @@
       "@components/*": ["./components/*"],
       "@context/*": ["./context/*"],
       "@data/*": ["./data/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@assets/*": ["./assets/*"],
       "@mixins": ["./styles/mixins.ts"],
-
     }
   },
   "include": ["src"],
