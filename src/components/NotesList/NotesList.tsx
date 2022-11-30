@@ -12,6 +12,13 @@ import NotesCounter from "@components/UI/NotesCounter/NotesCounter";
 const NotesList = () => {
   const [notes, setNotes] = useContext(NotesContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const open = () => {
+    console.log("open")
+  }
+  const handleOpenModal = () => {
+    console.log("open")
+  }
   return (
     <>
       <Modal open={isModalOpen} close={() => setIsModalOpen(false)}>
@@ -19,7 +26,7 @@ const NotesList = () => {
       </Modal>
 
       <NotesListHeader className="flex items-center pb-4">
-        <Button className="mr-4" primary={true} click={() => setIsModalOpen(true)}>
+        <Button className="mr-4" primary={true} click={handleOpenModal}>
           New
         </Button>
         <h2 className="inline-flex items-start">
@@ -27,12 +34,12 @@ const NotesList = () => {
         </h2>
       </NotesListHeader>
 
-      <NoteListStyled className="bg-white p-4 drop-shadow-3xl rounded-xl grid grid-cols-4">
+      <NoteListStyled className="bg-white p-4 drop-shadow-3xl rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
   {/*     <NoteListStyled className="bg-white p-4 drop-shadow-3xl rounded-xl flex flex-wrap"> */}
         {
           
           notes.map((note: NoteItemProps) => {
-            return <NoteItem key={note.id} {...note} />;
+            return <NoteItem key={note.id} {...note} handleOpenModal={handleOpenModal} />;
         })}
       </NoteListStyled>
     </>
