@@ -1,6 +1,6 @@
 export type ButtonProps = {
   children: string,
-  click: React.MouseEventHandler<HTMLButtonElement>,
+  click?: ()=> void,
   primary?: boolean,
   className?: string,
 }

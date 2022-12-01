@@ -1,4 +1,4 @@
-import { ContainerProps } from "postcss"
+import {ContainerProps } from './Container.types'
 import { ContainerStyled } from "./Container.style"
 
 const Container = ({children}:ContainerProps) => {

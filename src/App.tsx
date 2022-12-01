@@ -7,19 +7,23 @@ import GlobalStyles from "styles/global";
 import { AppStyled } from "App.style";
 import Container from "@components/UI/Container/Container";
 import Button from "@components/UI/Button/Button";
+import { ModalProvider } from "@context/ModalProvider";
 
 function App() {
-
   return (
-    <NotesProvider>
+    <>
       <GlobalStyles />
       <AppStyled className="App h-full">
         <Container>
-          <Header />
-          <NotesList />
+          <NotesProvider>
+            <ModalProvider>
+              <Header />
+              <NotesList />
+            </ModalProvider>
+          </NotesProvider>
         </Container>
       </AppStyled>
-    </NotesProvider>
+    </>
   );
 }
 

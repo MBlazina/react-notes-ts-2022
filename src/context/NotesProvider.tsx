@@ -1,7 +1,12 @@
 import { NoteItemProps } from "@components/NoteItem/NoteItem.type";
 import { useState, useEffect, createContext } from "react";
 
-export const NotesContext = createContext<NoteItemProps | null>(null);
+interface NotesContextProps {
+  notes?: NoteItemProps[],
+  setNotes?:React.Dispatch<NoteItemProps[]>
+}
+
+export const NotesContext = createContext<NotesContextProps>({});
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -21,11 +26,12 @@ export const NotesProvider = ({ children }: Props) => {
   const [notes, setNotes] = useState(initState);
 
   useEffect(() => {
-    const notesStore = JSON.parse(localStorage.getItem(LOCAL_STORE_KEY) || '');
-    console.log("notes store")
-    console.log(notesStore)
-    if (notesStore) { setNotes(notesStore) } else {
-      localStorage.setItem(LOCAL_STORE_KEY,"")
+    const notesStore = JSON.parse(localStorage.getItem(LOCAL_STORE_KEY) || "");
+
+    if (notesStore) {
+      setNotes(notesStore);
+    } else {
+      localStorage.setItem(LOCAL_STORE_KEY, "");
     }
   }, []);
 
@@ -33,5 +39,7 @@ export const NotesProvider = ({ children }: Props) => {
     localStorage.setItem(LOCAL_STORE_KEY, JSON.stringify(notes));
   }, [notes]);
 
-  return <NotesContext.Provider value={[notes, setNotes]}>{children}</NotesContext.Provider>;
+
+
+  return <NotesContext.Provider value={{notes:notes as NoteItemProps[], setNotes}}>{children}</NotesContext.Provider>;
 };

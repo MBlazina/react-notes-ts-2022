@@ -1,4 +1,4 @@
 export type NotesCounterProps = {
-  data: string,
+  data: number,
   className?: string,
 }
