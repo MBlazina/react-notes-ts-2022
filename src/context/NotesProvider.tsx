@@ -1,12 +1,12 @@
 import { NoteItemProps } from "@components/NoteItem/NoteItem.type";
 import { useState, useEffect, createContext } from "react";
 
-interface NotesContextProps {
-  notes?: NoteItemProps[],
-  setNotes?:React.Dispatch<NoteItemProps[]>
+export interface NotesContextProps {
+  notes: NoteItemProps[],
+  setNotes:React.Dispatch<NoteItemProps[]>
 }
 
-export const NotesContext = createContext<NotesContextProps>({});
+export const NotesContext = createContext<NotesContextProps | null>(null);
 
 interface Props {
   children: JSX.Element | JSX.Element[];

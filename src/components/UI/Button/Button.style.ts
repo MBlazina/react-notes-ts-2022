@@ -3,10 +3,17 @@ import {colors} from '@mixins'
 import { ButtonProps } from "./Button.types";
 
 export const ButtonStyled = styled.button<ButtonProps>`
-color: ${props => props.primary ? "white" : colors.greyDark};
-background: ${props => props.primary ? colors.buttonPrimary : "white"};
 
+/* PRIMARY */
+color: ${props => props.primary && "white"};
+background: ${props => props.primary && colors.buttonPrimary};
 &:hover {
-  background: ${props => props.primary ? "green" : "white"};
+  color: ${props => props.primary && colors.greyDark};
+  background: ${props => props.primary && colors.greenLight};
+}
+/* CLOSE */
+background: ${props => props.close && colors.buttonClose };
+&:hover {
+  background: ${props => props.close && colors.red};
 }
 `;

@@ -1,5 +1,4 @@
 export type ModalProps = {
-  children: JSX.Element | JSX.Element[],
-  open?: boolean,
-  close?: ()=> void,
-}
+  children: JSX.Element | JSX.Element[];
+  open?: boolean;
+};

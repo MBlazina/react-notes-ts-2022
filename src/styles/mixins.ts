@@ -1,10 +1,13 @@
 import { css } from "styled-components";
 
 export const colors = {
-  greyLight: "#efeef5", //app background
+  greyLight: "#efeef5",
   greyDark: "#15151e",
   blue: "#672ee3",
-  buttonPrimary: "#672ee3", //button primary color
+  red: "#fc5555",
+  greenLight: "#D9F99D",
+  buttonPrimary: "#672ee3",
+  buttonClose: "#FECDD3",
 };
 
 export const sizes = {

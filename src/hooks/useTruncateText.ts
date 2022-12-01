@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const truncateText = (text: string, characters: number) => {
+export const useTruncateText = (text: string, characters: number) => {
   const [truncatedText, setTruncatedText] = useState(text);
 
   useEffect(() => {

@@ -1,13 +1,13 @@
 import { useState, useEffect, createContext } from "react";
 
-interface ModalProps {
-  isModalOpen?: boolean;
-  handleOpenModal?: () => void;
-  handleCloseModal?: () => void;
-  activeNote?: string;
-  setActiveNote?: React.Dispatch<React.SetStateAction<string>>;
+export interface ModalContextProps {
+  isModalOpen: boolean;
+  handleOpenModal: () => void;
+  handleCloseModal: () => void;
+  activeNote: string;
+  setActiveNote: React.Dispatch<React.SetStateAction<string>>;
 }
-export const ModalContext = createContext<ModalProps>({});
+export const ModalContext = createContext<ModalContextProps | null>(null);
 
 interface Props {
   children: JSX.Element | JSX.Element[];

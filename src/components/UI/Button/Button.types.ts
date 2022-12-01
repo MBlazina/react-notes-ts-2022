@@ -1,6 +1,8 @@
 export type ButtonProps = {
-  children: string,
-  click?: ()=> void,
+  children: string | JSX.Element,
+  onClick?: ()=> void,
   primary?: boolean,
+  close?:boolean,
   className?: string,
+  type?: string,
 }

@@ -1,3 +1,4 @@
+import { mixins } from "@mixins";
 import styled from "styled-components";
 
 export const ModalStyled = styled.div`
@@ -11,5 +12,5 @@ export const ModalStyled = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 1
+  z-index: 1;
 `;

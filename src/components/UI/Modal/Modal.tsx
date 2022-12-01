@@ -1,15 +1,18 @@
-import { ModalStyled } from './Modal.style'
-import { ModalProps } from './Modal.types'
+import Button from "@components/UI/Button/Button";
+import Container from "../Container/Container";
+import { ModalStyled } from "./Modal.style";
+import { ModalProps } from "./Modal.types";
+import { ModalContext, ModalContextProps } from "@context/ModalProvider";
+import { useContext } from "react";
 
-const Modal = ({ children, open, close }: ModalProps) => {
-  
+const Modal = ({ children, open }: ModalProps) => {
+  const { handleCloseModal } = useContext(ModalContext) as ModalContextProps;
   if (!open) return null;
   return (
-    <ModalStyled>
-      <button onClick={close}>X</button>
-      {children}
+    <ModalStyled onClick={handleCloseModal}>
+      <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </ModalStyled>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;
