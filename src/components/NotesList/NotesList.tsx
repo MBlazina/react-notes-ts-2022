@@ -8,38 +8,31 @@ import { NoteListStyled, NotesListHeader } from "./NotesList.style";
 import Button from "@components/UI/Button/Button";
 import { colors } from "@mixins";
 import NotesCounter from "@components/UI/NotesCounter/NotesCounter";
+import {ModalContext } from '@context/ModalProvider';
 
 const NotesList = () => {
-  const [notes, setNotes] = useContext(NotesContext);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const open = () => {
-    console.log("open")
-  }
-  const handleOpenModal = () => {
-    console.log("open")
-  }
+  const { notes} = useContext(NotesContext);
+const {isModalOpen, handleOpenModal, handleCloseModal}= useContext(ModalContext)
   return (
     <>
-      <Modal open={isModalOpen} close={() => setIsModalOpen(false)}>
+      <Modal open={isModalOpen} close={handleCloseModal}>
         <NotesInput />
       </Modal>
 
       <NotesListHeader className="flex items-center pb-4">
-        <Button className="mr-4" primary={true} click={handleOpenModal}>
-          New
+        <Button className="mr-4" primary={true}  click={handleOpenModal}>
+          +
         </Button>
         <h2 className="inline-flex items-start">
-          Notes <NotesCounter className="ml-2" data={notes.length} />
+          Notes <NotesCounter className="ml-2" data={notes?.length ?? 0} />
         </h2>
       </NotesListHeader>
 
       <NoteListStyled className="bg-white p-4 drop-shadow-3xl rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-  {/*     <NoteListStyled className="bg-white p-4 drop-shadow-3xl rounded-xl flex flex-wrap"> */}
         {
           
-          notes.map((note: NoteItemProps) => {
-            return <NoteItem key={note.id} {...note} handleOpenModal={handleOpenModal} />;
+          notes?.map((note: NoteItemProps) => {
+            return <NoteItem key={note.id} {...note} />;
         })}
       </NoteListStyled>
     </>
