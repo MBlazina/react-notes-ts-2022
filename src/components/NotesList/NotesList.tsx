@@ -17,13 +17,16 @@ const NotesList = () => {
   const [filteredNotes, setFilteredNotes] = useState<any[]>([]);
 
   useEffect(() => {
+    if (!localStorage.getItem("notesStore")) {
+      localStorage.setItem("notesStore","[]");
+    }
     const filteredNotesArray = notes
       .filter((note) => note.title.toLowerCase().includes(filterNotesInput.toLowerCase()) || note.details.toLowerCase().includes(filterNotesInput.toLowerCase()))
       .map((note: NoteItemProps) => {
         return <NoteItem key={note.id} {...note} />;
       });
     setFilteredNotes(filteredNotesArray);
-  }, [filterNotesInput]);
+  }, [filterNotesInput, notes]);
   return (
     <>
       <Modal open={isModalOpen}>
