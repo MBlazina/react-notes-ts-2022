@@ -26,8 +26,11 @@ React App was created using vite and uses Typescript
 ### Components
 
 Components are organized in folders and use a structure like:
+
 **Component.tsx** component code
+
 **Component.type.ts** component types
+
 **Component.style.ts** component styles using styled-components
 
 ### Typescript
