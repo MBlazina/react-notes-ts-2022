@@ -46,12 +46,6 @@ const NotesList = () => {
       </NotesListHeader>
 
       <NoteListStyled className="bg-white p-4 shadow-lg rounded-xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {/* {notes
-          .filter((note) => note.title.toLowerCase().includes(filterNotes.toLowerCase()) || note.details.toLowerCase().includes(filterNotes.toLowerCase()))
-          .map((note: NoteItemProps) => {
-            return <NoteItem key={note.id} {...note} />;
-          })} */}
-        {/* {filteredNotes} */}
         {filteredNotes.length === 0 ? <h2>No results</h2> : filteredNotes}
       </NoteListStyled>
     </>
